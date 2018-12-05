@@ -1,0 +1,21 @@
+<IfModule mod_rewrite.c>
+	RewriteEngine On
+
+	RewriteCond %{HTTPS} !=on
+	RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+	# RewriteRule ^cards index.php?collection=21 [QSA]
+	RewriteRule ^process-purchase /resources/helpers/process-purchase.php [QSA]
+	RewriteRule ^galleryOFF /resources/helpers/toggle-gallery-mode.php?mode=0 [QSA]
+	RewriteRule ^gallery /resources/helpers/toggle-gallery-mode.php?mode=1 [QSA]
+	RewriteRule ^(.*)/(.*)/(.*) index.php?collection=$1&item=$2&page=$3 [QSA]
+	RewriteRule ^(.*)/(.*) index.php?collection=$1&item=$2 [QSA]
+	RewriteRule ^(.*) index.php?collection=$1 [QSA]
+	
+	# RewriteCond %{SERVER_PORT} 80 
+	# RewriteRule ^(.*)$ http://localhost/$1 [R,L]
+</IfModule>
+
+Options -Indexes
