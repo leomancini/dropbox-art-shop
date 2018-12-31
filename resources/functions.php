@@ -45,7 +45,7 @@
 	// page to restrict access to that page to
 	// users that are successfully logged-in
 	function restricted() {
-		if(!isset($_COOKIE['SECRET: ADMIN LOGIN COOKIE'])) {
+		if($_COOKIE['SECRET: ADMIN LOGIN COOKIE NAME'] != "SECRET: ADMIN LOGIN COOKIE VALUE") {
 			header("Location: /admin/login.php");
 			die();
 		}
