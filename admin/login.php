@@ -3,7 +3,7 @@
 		if($_POST['password'] != "SECRET: ADMIN PASSWORD") {
 			header("Location: ./");
 		} else {
-			setCookie("SECRET: ADMIN LOGIN COOKIE", 1);
+			setCookie("SECRET: ADMIN LOGIN COOKIE NAME", "SECRET: ADMIN LOGIN COOKIE VALUE");
 			header("Location: ./");
 		}
 	} else {
